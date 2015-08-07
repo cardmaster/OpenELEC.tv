@@ -19,11 +19,9 @@ yesorexit(){
 unpack_rutorrent(){
   mkdir -p $rutorrent_dir/www 
   tar xjf /usr/lib/rutorrent/default.tar.bz2 -C $rutorrent_dir/www
-  PHP_CGI=$(whcih php-cgi)
-  echo "Using php-cgi" $PHP_CGI
   cat > $rutorrent_dir/php-wrap <<EOF
 #!/bin/sh
-$PHP_CGI -c ${rutorrent_dir} $$@
+php-cgi -c ${rutorrent_dir} \$@
 EOF
   chmod +x $rutorrent_dir/php-wrap
 
@@ -52,7 +50,7 @@ echo "setting up files"
 
 unpack_rutorrent
 
-setupdate=$(date +%Y%m%d_%H%M%S)
+setupdate=`date +%Y%m%d_%H%M%S`
 cat > $LEAFMOD_STAMP_FILE <<EOF
 LEAFMOD_STAMP_REV_S=${LEAFMOD_STAMP_REV}
 LEAFMOD_STAMP_DATE_S=${setupdate}
@@ -70,27 +68,36 @@ schedule = watch_directory_1,10,10,"load_start=/storage/media/torrent/torrents/*
 
 EOF
 
+cp /etc/yaddns.conf.default /storage/yaddns.conf
+echo -n "Editing yaddns conf file now, ready?"
+yesorexit
+vi /storage/yaddns.conf
 
 echo "creating autostart.sh"
+
+if [ -f /storage/.config/autostart.sh ]; then
+  echo "Old autostart.sh was bakup to  /storage/.config/autostart.sh.bak"
+  cp /storage/.config/autostart.sh /storage/.config/autostart.sh.bak
+fi
 
 cat > /storage/.config/autostart.sh <<EOF
 #!/bin/sh
 start_rtorrent(){
 	n=1
-	prevpwd=$$(pwd)
+	prevpwd=\$(pwd)
 	cd /storage
         sleep 5
 	until pidof rtorrent > /dev/null; do
           sleep 5
   	  screen -dmS rtdmscr rtorrent 
 	  sleep 5
-	  n=$$((n+1))
-          if [ $$n -gt 8 ];
+	  n=\$((n+1))
+          if [ \$n -gt 8 ];
               exit 0
-              echo $$(date +%Y%m%d_%H%M%S) ":start rtorrent failed with $$n retires" >> /storage/rtorrent.autostart.log
+              echo \$(date +%Y%m%d_%H%M%S) ":start rtorrent failed with \$n retires" >> /storage/rtorrent.autostart.log
           fi
 	done
-	cd $$prevpwd
+	cd \$prevpwd
 }
 
 start_rutorrent(){
@@ -108,4 +115,5 @@ start_yaddns(){
 )&
 
 EOF
+chmod +x /storage/.config/autostart.sh
 
