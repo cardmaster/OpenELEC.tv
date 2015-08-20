@@ -23,7 +23,7 @@ PKG_ARCH="any"
 PKG_LICENSE="various"
 PKG_SITE="http://github.com/cardmaster"
 PKG_URL=""
-PKG_DEPENDS_TARGET="rtorrent libtorrent libsigc++ xmlrpc-c screen rutorrent php yaddns"
+PKG_DEPENDS_TARGET="rtorrent libtorrent libsigc++ xmlrpc-c screen rutorrent php yaddns mktorrent"
 PKG_PRIORITY="optional"
 PKG_SECTION="leafmod"
 PKG_SHORTDESC="leafmod: leaf mod for openelec package"
@@ -40,9 +40,11 @@ make_target(){
 makeinstall_target() {
   echo +mkdir -p $INSTALL/usr/bin
   mkdir -p $INSTALL/usr/bin
+  mkdir -p $INSTALL/etc/leafmod
   echo + cp $PKG_DIR/source/leafmodesetup.sh $INSTALL/usr/bin/setup_leafmod
   cp -f $PKG_DIR/source/leafmodesetup.sh $INSTALL/usr/bin/setup_leafmod
   echo + chmod 755 $INSTALL/usr/bin/setup_leafmod
   chmod 755 $INSTALL/usr/bin/setup_leafmod
+
 }
 
