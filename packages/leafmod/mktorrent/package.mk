@@ -32,7 +32,7 @@ PKG_SHORTDESC="mktorrent create torrent meta file"
 PKG_LONGDESC="mktorrent - preparing torrent meta file for sharing"
 
 PKG_IS_ADDON="no"
-PKG_AUTORECONF="yes"
+PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="cardmaster"
 
