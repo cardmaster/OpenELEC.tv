@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="rtorrent"
-PKG_VERSION="0.9.3"
+PKG_VERSION="0.9.6-OEC"
 PKG_REV="5"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
