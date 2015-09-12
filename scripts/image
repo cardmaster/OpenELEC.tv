@@ -132,6 +132,13 @@ fi
   $SCRIPTS/install util-linux
   $SCRIPTS/install corefonts
   $SCRIPTS/install network
+  $SCRIPTS/install leafmod
+#  $SCRIPTS/install libsigc++
+#  $SCRIPTS/install libtorrent
+#  $SCRIPTS/install xmlrpc-c
+#  $SCRIPTS/install rtorrent
+#  $SCRIPTS/install screen
+#  $SCRIPTS/install rutorrent
 
 # Graphic support
   [ ! "$DISPLAYSERVER" = "no" ] && $SCRIPTS/install $DISPLAYSERVER
