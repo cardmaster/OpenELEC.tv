@@ -1,0 +1,11 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,7 +1,6 @@
+ SUBDIRS = \
+ 	doc \
+-	src \
+-	test
++	src
+ 
+ EXTRA_DIST= \
+ 	autogen.sh \
