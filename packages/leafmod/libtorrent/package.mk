@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="libtorrent"
-PKG_VERSION="0.13.3"
+PKG_VERSION="0.13.6-OEC"
 PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
