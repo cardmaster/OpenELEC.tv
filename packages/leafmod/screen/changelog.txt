@@ -1,0 +1,33 @@
+4.3.4
+- rebuild
+
+4.3.2
+- looking for maintainer
+
+4.3.1
+- rebuild
+
+4.3.0
+- rebuild for addon api bump
+- update to screen-4.2.1
+
+4.1.1
+- rebuild for ncurses changes
+
+4.1.0
+- rebuild for addon api bump
+
+4.0.1
+- rebuild
+
+4.0.0
+- rebuild for OpenELEC-4.0
+
+3.1.1
+- rebuild for OpenELEC-3.2
+
+3.0.2
+- rebuild
+
+3.0.1
+- initial addon based on screen-4.0.3

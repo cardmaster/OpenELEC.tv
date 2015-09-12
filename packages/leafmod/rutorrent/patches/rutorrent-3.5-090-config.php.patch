@@ -1,0 +1,65 @@
+commit 21e6ad539fc8b1e79ea6f46ae0d7f7cca85c87b3
+Author: Carol Evans <carol@mushmallow.(none)>
+Date:   Fri Aug 7 00:47:35 2015 +0800
+
+    Leaf mode for openelec
+
+diff --git a/conf/config.php b/conf/config.php
+index f29fb89..b0c2178 100644
+--- a/conf/config.php
++++ b/conf/config.php
+@@ -19,15 +19,15 @@
+ 	$schedule_rand = 10;			// rand for schedulers start, +0..X seconds
+ 
+ 	$do_diagnostic = true;
+-	$log_file = '/tmp/errors.log';		// path to log file (comment or leave blank to disable logging)
++	$log_file = '/var/log/rutorrent_errors.log';		// path to log file (comment or leave blank to disable logging)
+ 
+ 	$saveUploadedTorrents = true;		// Save uploaded torrents to profile/torrents directory or not
+ 	$overwriteUploadedTorrents = false;     // Overwrite existing uploaded torrents in profile/torrents directory or make unique name
+ 
+-	$topDirectory = '/';			// Upper available directory. Absolute path with trail slash.
+-	$forbidUserSettings = false;
++	$topDirectory = '/storage/';			// Upper available directory. Absolute path with trail slash.
++	$forbidUserSettings = true;
+ 
+-	$scgi_port = 5000;
++	$scgi_port = 9999;
+ 	$scgi_host = "127.0.0.1";
+ 
+ 	// For web->rtorrent link through unix domain socket 
+@@ -39,20 +39,20 @@
+ 
+ 	$XMLRPCMountPoint = "/RPC2";		// DO NOT DELETE THIS LINE!!! DO NOT COMMENT THIS LINE!!!
+ 
+-	$pathToExternals = array(
+-		"php" 	=> '',			// Something like /usr/bin/php. If empty, will be found in PATH.
+-		"curl"	=> '',			// Something like /usr/bin/curl. If empty, will be found in PATH.
+-		"gzip"	=> '',			// Something like /usr/bin/gzip. If empty, will be found in PATH.
+-		"id"	=> '',			// Something like /usr/bin/id. If empty, will be found in PATH.
+-		"stat"	=> '',			// Something like /usr/bin/stat. If empty, will be found in PATH.
+-	);
+-
+-	$localhosts = array( 			// list of local interfaces
+-		"127.0.0.1", 
+-		"localhost",
+-	);
+-
+-	$profilePath = '../share';		// Path to user profiles
++        $pathToExternals = array(                                               
++                "php"   => '/storage/leafmod/rutorrent/php-wrap',                  // Something lik
++                "curl"  => '/usr/bin/curl',                     // Something lik
++                "gzip"  => '/bin/gzip',                 // Something like /usr/b
++                "id"    => '/bin/id',                   // Something like /usr/b
++                "stat"  => '/bin/stat',                 // Something like /usr/b
++        );                                                                      
++                                                                                
++        $localhosts = array(                    // list of local interfaces     
++                "127.0.0.1",                                                    
++                "localhost",                                                    
++        );                                                                      
++                                                                                
++        $profilePath = '/storage/leafmod/rutorrent/profiles/';  // Path to user profiles
+ 	$profileMask = 0777;			// Mask for files and directory creation in user profiles.
+ 						// Both Webserver and rtorrent users must have read-write access to it.
+ 						// For example, if Webserver and rtorrent users are in the same group then the value may be 0770.
