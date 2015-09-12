@@ -16,35 +16,35 @@
 #  along with OpenELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
 
-PKG_NAME="libnfs"
-PKG_VERSION="1.9.8"
+PKG_NAME="leafmod"
+PKG_VERSION="1.0"
 PKG_REV="1"
 PKG_ARCH="any"
-PKG_LICENSE="GPL"
-PKG_SITE="https://github.com/sahlberg/libnfs"
-PKG_URL="https://github.com/sahlberg/$PKG_NAME/archive/$PKG_NAME-$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain"
+PKG_LICENSE="various"
+PKG_SITE="http://github.com/cardmaster"
+PKG_URL=""
+PKG_DEPENDS_TARGET="rtorrent libtorrent libsigc++ xmlrpc-c screen rutorrent php yaddns mktorrent"
 PKG_PRIORITY="optional"
-PKG_SECTION="network"
-PKG_SHORTDESC="libnfs: a client library for accessing NFS shares over a network."
-PKG_LONGDESC="LIBNFS is a client library for accessing NFS shares over a network."
+PKG_SECTION="leafmod"
+PKG_SHORTDESC="leafmod: leaf mod for openelec package"
+PKG_LONGDESC="leafmod: virtual package to install all leaf mod packages yaddns"
 
 PKG_IS_ADDON="no"
-PKG_AUTORECONF="yes"
+PKG_AUTORECONF="no"
 
-PKG_CONFIGURE_OPTS_TARGET="--disable-examples --disable-tirpc"
-
-unpack() {
-  tar xzf $SOURCES/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.gz -C $BUILD
-
-  if [ -d  $BUILD/$PKG_NAME-$PKG_NAME-$PKG_VERSION ]; then
-    mv $BUILD/$PKG_NAME-$PKG_NAME-$PKG_VERSION $BUILD/$PKG_NAME-$PKG_VERSION
-  fi
+make_target(){
+:
+#nop
 }
 
-pre_configure_target() {
-# dont build parallel
-  MAKEFLAGS=-j1
+makeinstall_target() {
+  echo +mkdir -p $INSTALL/usr/bin
+  mkdir -p $INSTALL/usr/bin
+  mkdir -p $INSTALL/etc/leafmod
+  echo + cp $PKG_DIR/source/leafmodesetup.sh $INSTALL/usr/bin/setup_leafmod
+  cp -f $PKG_DIR/source/leafmodesetup.sh $INSTALL/usr/bin/setup_leafmod
+  echo + chmod 755 $INSTALL/usr/bin/setup_leafmod
+  chmod 755 $INSTALL/usr/bin/setup_leafmod
 
-  export CFLAGS="$CFLAGS -D_FILE_OFFSET_BITS=64 -I$ROOT/$PKG_BUILD/mount -I$ROOT/$PKG_BUILD/nfs"
 }
+
