@@ -26,7 +26,7 @@ PKG_LICENSE="GPL"
 PKG_SITE="http://libtorrent.rakshasa.no"
 #PKG_URL="http://libtorrent.rakshasa.no/downloads/$PKG_NAME-$PKG_VERSION.tar.gz"
 PKG_URL="http://github.com/cardmaster/$PKG_NAME/archive/$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain libressl curl ncurses libsigc++"
+PKG_DEPENDS_TARGET="toolchain libressl curl ncurses libsigc++ zlib"
 PKG_PRIORITY="optional"
 PKG_SHORTDESC=""
 PKG_LONGDESC=""
@@ -41,6 +41,7 @@ PKG_CONFIGURE_OPTS_TARGET="--disable-shared \
             --enable-aligned \
 	    --disable-debug \
 	    --without-kqueue \
+	    --with-zlib=$SYSROOT_PREFIX/usr \
 	    --with-posix-fallocate"
 
 unpack() {
