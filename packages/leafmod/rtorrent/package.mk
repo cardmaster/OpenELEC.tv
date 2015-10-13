@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="rtorrent"
-PKG_VERSION="0.9.6-OEC3"
+PKG_VERSION="0.9.6-OEC4"
 PKG_REV="5"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -50,3 +50,13 @@ post_unpack() {
 #makeinstall_target() {
 #  : # nop
 #}
+post_makeinstall_target() {
+  mkdir -p $INSTALL/usr/share
+  echo cp -f -P $ROOT/$PKG_BUILD/doc/rtorrent.rc $INSTALL/usr/share/rtorrent.rc.default
+  cp -f -P $ROOT/$PKG_BUILD/doc/rtorrent.rc $INSTALL/usr/share/rtorrent.rc.default
+}
+
+post_install() {
+  enable_service rtorrent-defaults.service
+  enable_service rtorrent-daemon.service
+}
