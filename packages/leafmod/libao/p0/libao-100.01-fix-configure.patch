@@ -1,0 +1,35 @@
+diff --git a/Makefile.am b/Makefile.am
+index e40576c..39af0f8 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -3,6 +3,7 @@
+ AUTOMAKE_OPTIONS = foreign 1.6 dist-zip
+ 
+ SUBDIRS = src include doc
++ACLOCAL_AMFLAGS = -I m4
+ 
+ m4datadir = $(datadir)/aclocal
+ m4data_DATA = ao.m4
+diff --git a/ao.pc.in b/ao.pc.in
+index 49946ef..91172c6 100644
+--- a/ao.pc.in
++++ b/ao.pc.in
+@@ -12,5 +12,5 @@ Requires:
+ Conflicts:
+ Libs: -L${libdir} -lao
+ Libs.private: @LIBS@
+-Cflags: -I${includedir}
++Cflags: 
+ 
+diff --git a/configure.ac b/configure.ac
+index 67a06f8..b735274 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -15,6 +15,7 @@ LIB_AGE=1
+ AC_SUBST(LIB_CURRENT)
+ AC_SUBST(LIB_REVISION)
+ AC_SUBST(LIB_AGE)
++AC_CONFIG_MACRO_DIR([m4])
+ 
+ dnl Plugin versioning.  We use an integer version number much like LIB_CURRENT.
+ PLUGIN_VERSION=4
