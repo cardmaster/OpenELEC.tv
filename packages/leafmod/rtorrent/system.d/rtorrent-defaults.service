@@ -1,0 +1,12 @@
+[Unit]
+Description=rTorrent defaults
+After=local-fs.target
+
+ConditionPathExists=!/storage/.rtorrent.rc
+ConditionPathExists=!/storage/downloads/torrent/torrents
+ConditionPathExists=!/storage/downloads/torrent/Session
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c 'cp /usr/share/rtorrent.rc.default /storage/.rtorrent.rc; mkdir -p /storage/downloads/torrent/torrents; mkdir -p /storage/downloads/torrent/Session'
+RemainAfterExit=yes
