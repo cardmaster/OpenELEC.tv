@@ -1,0 +1,17 @@
+[Unit]
+Description=rTorrent Daemon
+After=network.target rtorrent-defaults.service
+Requires=rtorrent-defaults.service
+ConditionPathExists=/storage/.rtorrent.rc
+
+[Service]
+Restart=on-failure
+ExecStart=/usr/bin/screen -dmS rtorrent rtorrent
+ExecReload=/usr/bin/screen -dmS rtorrent rtorrent
+TimeoutStopSec=20s
+RestartSec=20
+StartLimitInterval=120
+StartLimitBurst=60
+
+[Install]
+WantedBy=multi-user.target
