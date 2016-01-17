@@ -24,6 +24,7 @@ unpack_rutorrent(){
   echo "Using php-cgi" $PHP_CGI
   cat > $rutorrent_dir/php-wrap <<EOF
 #!/bin/sh
+REDIRECT_STATUS=1 export REDIRECT_STATUS
 $PHP_CGI -c ${rutorrent_dir} \$@
 EOF
   chmod +x $rutorrent_dir/php-wrap
