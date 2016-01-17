@@ -1,0 +1,19 @@
+commit c59e19dbfdbd7f4a02829ff8b007d5bb2e1618e4
+Author: cardmaster <leafjohn@gmail.com>
+Date:   Sun Jan 17 14:17:27 2016 +0800
+
+    ADD ncurses deps
+ 
+diff --git a/src/shared/CMakeLists.txt b/src/shared/CMakeLists.txt
+index f757fba..e203c74 100644
+--- a/src/shared/CMakeLists.txt
++++ b/src/shared/CMakeLists.txt
+@@ -18,7 +18,7 @@ set(miracle-shared_SOURCES rtsp.h
+                              wpas.h 
+                              wpas.c)
+ add_library(miracle-shared STATIC ${miracle-shared_SOURCES})
+-target_link_libraries (miracle-shared systemd)
++target_link_libraries (miracle-shared systemd ncurses)
+ 
+ 
+ ########### install files ###############
