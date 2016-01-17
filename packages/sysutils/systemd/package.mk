@@ -42,7 +42,7 @@ PKG_CONFIGURE_OPTS_TARGET="ac_cv_func_malloc_0_nonnull=yes \
                            --disable-gtk-doc-pdf \
                            --disable-python-devel \
                            --disable-python-devel \
-                           --disable-dbus \
+                           --enable-dbus \
                            --disable-utmp \
                            --disable-compat-libs \
                            --disable-coverage \
@@ -94,7 +94,7 @@ PKG_CONFIGURE_OPTS_TARGET="ac_cv_func_malloc_0_nonnull=yes \
                            --disable-networkd \
                            --disable-efi \
                            --disable-terminal \
-                           --disable-kdbus \
+                           --enable-kdbus \
                            --disable-myhostname \
                            --disable-gudev \
                            --enable-hwdb \

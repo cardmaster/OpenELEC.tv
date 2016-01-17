@@ -57,6 +57,7 @@ post_makeinstall_target() {
 }
 
 post_install() {
-  enable_service rtorrent-defaults.service
-  enable_service rtorrent-daemon.service
+#  enable_service rtorrent-defaults.service
+#  enable_service rtorrent-daemon.service
+	echo "POST rtorrent"
 }
