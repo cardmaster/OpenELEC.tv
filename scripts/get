@@ -39,7 +39,8 @@ if [ -n "$PKG_URL" -o -n "$PKG_GIT_URL" ]; then
   done
 
   if [ -n "$PKG_URL" ]; then
-    for i in $PKG_URL; do
+    PKG_MIRRORED_URL=$(./scripts/url_mirror $PKG_URL)
+    for i in $PKG_MIRRORED_URL; do
       SOURCE_NAME="`basename $i`"
       PACKAGE="$SOURCES/$1/$SOURCE_NAME"
       PACKAGE_MIRROR="$DISTRO_MIRROR/$PKG_NAME/$SOURCE_NAME"
