@@ -25,7 +25,7 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://libtorrent.rakshasa.no"
 PKG_URL="http://github.com/cardmaster/$PKG_NAME/archive/$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain libressl curl ncurses libtorrent zlib xmlrpc-c libsigc++"
+PKG_DEPENDS_TARGET="toolchain libressl curl netbsd-curses libtorrent zlib xmlrpc-c libsigc++"
 PKG_PRIORITY="optional"
 PKG_SECTION="service/downloadmanager"
 PKG_SHORTDESC="rTorrent: a very fast, free BitTorrent client"
@@ -35,16 +35,26 @@ PKG_AUTORECONF="yes"
 
 PKG_MAINTAINER="Daniel Forsberg (jenkins101)"
 
-PKG_CONFIGURE_OPTS_TARGET="ax_cv_header_ncurses_curses_h=yes --disable-debug \
+PKG_CONFIGURE_OPTS_TARGET="--disable-debug \
             --with-xmlrpc-c=$SYSROOT_PREFIX/usr/bin/xmlrpc-c-config \
-            --with-gnu-ld"
+            --with-gnu-ld \
+"
 
 unpack() {
 	tar xzf $SOURCES/$PKG_NAME/$PKG_VERSION.tar.gz -C $BUILD
 }
 
 post_unpack() {
-  $SED "s:<ncurses/curses.h>:<ncurses/ncurses.h>:g" $PKG_BUILD/src/display/attributes.h
+  $SED "s:<ncurses/curses.h>:<curses.h>:g" $PKG_BUILD/src/display/attributes.h
+  $SED "s:<ncurses/ncurses.h>:<curses.h>:g" $PKG_BUILD/src/input/input_event.cc
+}
+
+pre_configure_target() {
+# bluez fails to build in subdirs
+  cd $ROOT/$PKG_BUILD
+    rm -rf .$TARGET_NAME
+
+  export LIBS="-lncurses -lterminfo"
 }
 
 #makeinstall_target() {

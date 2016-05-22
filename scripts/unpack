@@ -82,6 +82,8 @@ else
     $SCRIPTS/extract $1 "$1*.tgz"     $BUILD
     $SCRIPTS/extract $1 "$1*.7z"      $BUILD
     $SCRIPTS/extract $1 "$1*.zip"     $BUILD
+    $SCRIPTS/extract $1 "$PKG_VERSION.tar.gz"     $BUILD #Github release compatible, as github release only resever version tag in tarballname
+    $SCRIPTS/extract $1 "$PKG_VERSION.zip"     $BUILD #Github release compatible, as github release only resever version tag in tarballname
   elif [ -n "$PKG_GIT_URL" ]; then
     $SCRIPTS/extract $1 "$1*.tar.xz"  $BUILD
   fi
