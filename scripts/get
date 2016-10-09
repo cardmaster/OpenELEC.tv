@@ -40,6 +40,9 @@ if [ -n "$PKG_URL" -o -n "$PKG_GIT_URL" ]; then
 
   if [ -n "$PKG_URL" ]; then
     PKG_MIRRORED_URL=$(./scripts/url_mirror $PKG_URL)
+    if [ "${PKG_MIRRORED_URL}" != "${PKG_URL}" ]; then
+        echo "MIRRORING: ${PKG_URL} => ${PKG_MIRRORED_URL}"
+    fi
     for i in $PKG_MIRRORED_URL; do
       SOURCE_NAME="`basename $i`"
       PACKAGE="$SOURCES/$1/$SOURCE_NAME"
