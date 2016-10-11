@@ -5,6 +5,7 @@ class URLMirror:
 	def __init__(self):
 		self.mirrors = { "ftp://ftp.gnu.org/gnu":"ftp://ftp.twaren.net/Unix/GNU/gnu",
 			     "http://ftp.gnu.org/gnu":"http://ftp.twaren.net/Unix/GNU/gnu",
+			     "http://ftp.gnu.org/pub":"http://ftp.twaren.net/Unix/GNU/pub",
 			     "http://curl.haxx.se/download": "http://curl.mirror.anstey.ca",
 				}
 	def tr(self, inurl):
