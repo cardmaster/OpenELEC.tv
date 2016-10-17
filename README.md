@@ -17,6 +17,14 @@ Any help appreciated via pull requests or [Orange Pi forum](http://www.orangepi.
 
 Latest prebuilt images can be found [here](http://www.orangepi.org/orangepibbsen/forum.php?mod=viewthread&tid=1075)
 
+#Leaf Mod
+Leaf Mod add a rutorrent + rtorrent for torrenting.
+Not add as services but as an atuostart script.
+run leaf_mod_setup at first boot to configure them.
+
+This branch allows build for Orange Pi which has a 
+gigabyte ether net. for my board
+make PROJECT=H3 ARCH=arm SYSTEM=opiplus release
 
 [OpenELEC](http://www.openelec.tv)
 
